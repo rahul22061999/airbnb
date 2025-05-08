@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "../components/navBar";
 import { Poppins } from "next/font/google";
+import { getAuthSession } from "@/utils/auth";
 
 export const metadata = {
   title: "Create Next App",
@@ -13,7 +14,9 @@ const poppins = Poppins({
   subsets: ["latin"],
 });
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const session = await getAuthSession();
+
   return (
     <html lang="en" className="">
       <body className={`${poppins.className} antialiased`}>

@@ -17,10 +17,10 @@ datasource db {
 model User {
   id             String    @id @default(auto()) @map("_id") @db.ObjectId
   name           String?
-  email          String
+  email          String    @unique
   emailVerified  DateTime?
   image          String?
-  hashedPassword String?
+  hashedPassword String
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
   favouriteIds   String[] // ["home-1", "home-2", "home-3"]
@@ -61,17 +61,19 @@ model Reservation {
 }
 
 model Account {
-  id                String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId            String  @db.ObjectId
-  providerType      String
-  type              String
-  provider          String
-  providerId        String
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  userId   String @db.ObjectId
+  type     String
+  provider String
+
   providerAccountId String
   refresh_token     String?
   access_token      String?
   token_type        String?
   scope             String?
+  expires_at        Int?
+  session_state     String?
+  id_token          String? @db.String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

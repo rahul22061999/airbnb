@@ -153,15 +153,16 @@ exports.Prisma.ReservationScalarFieldEnum = {
 exports.Prisma.AccountScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  providerType: 'providerType',
   type: 'type',
   provider: 'provider',
-  providerId: 'providerId',
   providerAccountId: 'providerAccountId',
   refresh_token: 'refresh_token',
   access_token: 'access_token',
   token_type: 'token_type',
   scope: 'scope',
+  expires_at: 'expires_at',
+  session_state: 'session_state',
+  id_token: 'id_token',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
